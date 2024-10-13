@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CycleMaster Showroom</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --text-color: #333;
+            --background-color: #ecf0f1;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        .section {
+            padding: 4rem 2rem;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+        }
+        #hero {
+            background: url('/api/placeholder/1200/600') center/cover no-repeat;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        .hero-content {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        .bike-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .bike-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .bike-card:hover {
+            transform: translateY(-10px);
+        }
+        .bike-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .bike-info {
+            padding: 1rem;
+        }
+        .cta-button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #c0392b;
+        }
+        #features {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .feature-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .feature-item {
+            text-align: center;
+            margin: 1rem;
+        }
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#bikes">Our Bikes</a>
+            <a href="#features">Features</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="hero" class="section">
+        <div class="hero-content">
+            <h1>Welcome to CycleMaster Showroom</h1>
+            <p>Discover Your Perfect Ride</p>
+            <a href="#bikes" class="cta-button">Explore Bikes</a>
+        </div>
+    </section>
+
+    <section id="bikes" class="section">
+        <h2>Our Bike Collection</h2>
+        <div class="bike-grid">
+            <div class="bike-card">
+                <img src="/api/placeholder/300/200" alt="Mountain Bike">
+                <div class="bike-info">
+                    <h3>Mountain Explorer</h3>
+                    <p>Conquer any trail with our robust mountain bike.</p>
+                    <button class="cta-button">Learn More</button>
+                </div>
+            </div>
+            <div class="bike-card">
+                <img src="/api/placeholder/300/200" alt="Road Bike">
+                <div class="bike-info">
+                    <h3>Road Master</h3>
+                    <p>Speed and efficiency for the serious road cyclist.</p>
+                    <button class="cta-button">Learn More</button>
+                </div>
+            </div>
+            <div class="bike-card">
+                <img src="/api/placeholder/300/200" alt="City Bike">
+                <div class="bike-info">
+                    <h3>Urban Commuter</h3>
+                    <p>Stylish and practical for your daily city rides.</p>
+                    <button class="cta-button">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="section">
+        <h2>Why Choose Us</h2>
+        <div class="feature-list">
+            <div class="feature-item">
+                <div class="feature-icon">🏆</div>
+                <h3>Quality Assurance</h3>
+                <p>All our bikes are thoroughly tested for quality and performance.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🛠️</div>
+                <h3>Expert Maintenance</h3>
+                <p>Our skilled technicians provide top-notch maintenance services.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">💰</div>
+                <h3>Best Value</h3>
+                <p>Competitive pricing without compromising on quality.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contact Us</h2>
+        <form id="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit" class="cta-button">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 CycleMaster Showroom. All rights reserved.</p>
+    </footer>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from('.bike-card', {
+            scrollTrigger: {
+                trigger: '#bikes',
+                start: 'top center'
+            },
+            opacity: 0,
+            y: 50,
+            stagger: 0.2,
+            duration: 1
+        });
+
+        gsap.from('.feature-item', {
+            scrollTrigger: {
+                trigger: '#features',
+                start: 'top center'
+            },
+            opacity: 0,
+            y: 30,
+            stagger: 0.2,
+            duration: 1
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
